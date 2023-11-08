@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./five.css">
+    <style>
+        #one{
+            color:green;
+        }
+
+        #two{
+            color:red;
+            color:blue;
+        }
+        #two{
+            color:orange;
+        }
+
+        #three{
+            color:brown;
+        }
+
+        
+        ul{
+            color:purple;
+        }
+        .forth-class{
+            color: red;
+        }
+        li[draggable="true"]{
+            color: blueviolet;
+        }
+        #four{
+            color:cyan;
+        }
+
+        #five{
+            color:green
+        }
+
+        #six{
+            color: pink !important ;
+            color: cadetblue;
+        }
+    </style>
+</head>
+<body>
+    <!--one: -->
+    <ul id="one">
+        <!--The second bullet point will be colored red,
+        because inline takes precedence over internal and external. -->
+        <li>one</li>
+        <li style="color: red;">two</li>
+        <li>three</li>
+    </ul>
+    <!--two: -->
+    <ul id="two">
+        <!--At first it becomes red and then blue and then immediately becomes orange.
+        If we target the same element twice then the style that will be apllied will 
+        be the last one. -->
+        <li>uno</li>
+        <li>due</li>
+        <li>tre</li>
+    </ul>
+
+    <!--three:  (Two elements share the same ID).-->
+    <ul id="three">
+        <li>uno</li>
+        <li>dos</li>
+        <li>tres</li>
+    </ul>
+    <ul id="three">
+        <li>uno</li>
+        <li>dos</li>
+        <li>tres</li>
+    </ul>
+
+
+    <!--four: -->
+    <ul id="four" class="forth-class" draggable="true">
+        <!-- We give 3 different ways to target an element <ul>.
+            The four css rules at the css section will target this element 4 times.
+            The color changes from purple->red-> blueViolet->cyan.
+            However not all selectors have the same specificity, the id selector with the
+            has the highest specificity after the inline style...
+            Then the class, attribute and pseudo classes selectors have the highest 
+            specificity, and the element specificity comes last in the hierarchy.
+            Specificity: inline ->id ->class=attribute=pseudo class -> element.
+            -->
+        <li>ενα </li>
+        <li>δυο</li>
+        <li>τρια</li>
+    </ul>
+
+    <!--five: We will use inline, internal and external types css to determine which is 
+        higher in the hierarchy.-->
+    <ul id="five" style="color: blue;">
+        <!-- As we can see the color of the elements is blue meaning that it took the 
+           inline style. The reason being is because the most important stylesheet are ranked 
+        inline -> internal  -> external (descending order). -->
+        <li>eins </li>
+        <li>zwei </li>
+        <li>drei</li>
+    </ul>
+
+
+    <!--six: last-->
+    <ul id="six">
+        <!-- Here we will try to change the color twice but with the exception that 
+            this time we will use a special keyword that can be applied to any css rule.
+            The keyword (!important) ensures that it will be the most important rule 
+            and will be applied.
+            As such the color will remain the same and not changes will be made.  -->
+        <li>një </li>
+        <li>dy </li>
+        <li>tre</li>
+    </ul>
+</body>
+</html>
